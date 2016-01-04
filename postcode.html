@@ -7,10 +7,15 @@
     <script language="JavaScript">
         function lookup_postcode(form){
             var postcode = form.postcode.value.toUpperCase();
-            if (postcode == "2805CZ"){
-                alert ("Blokouderling: Anne Bosman")
+            switch(postcode) {
+                case "2805CZ":
+                case "2805CC":
+                    var blokouderling = "Anne Bosman";
+                    break;
+                default:
+                    var blokouderling = "Onbekend";
             }
-            alert ("You typed: " + postcode)
+            alert ("Blokouderling: " + blokouderling)
         }
     </script>
 </head>
