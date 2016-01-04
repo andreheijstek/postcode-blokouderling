@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Postcode</title>
+
+    <script language="JavaScript">
+        function lookup_postcode(form){
+            var pc = form.postcode.value;
+            alert ("You typed: " + pc)
+        }
+    </script>
+</head>
+
+<body>
+    <form name = "postcode" action = "" method = "get">
+        Postcode:<br>
+        <input type="text" name="postcode">
+        <br>
+        <input type="submit" value="Zoek uw blokouderling" onClick="lookup_postcode(this.form)">
+    </form>
+
+</body>
+</html>
+
