@@ -1,3 +1,12 @@
+<!--TODO:-->
+<!--Maybe replace the input field with a dropdown with all postcodes (only if not too many)-->
+<!--The button can then be removed, selecting should directly yield the result-->
+
+<!--Prevent 2 names being shown when you repeatedly select a postcode.-->
+
+<!--Show more than just the name of the blokouderling: blok nummer (?), photo, short bio, buurtbijbelkring.-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +30,8 @@
                     default:
                         var blokouderling = "Onbekend";
                 }
-                $("#postcode").after(blokouderling);
+                $("#blokouderling").remove();
+                $("#postcode").after('<div id=blokouderling>' + blokouderling + '</div>');
             });
         });
     </script>
@@ -30,7 +40,7 @@
 
 <body>
 
-    <p>Postcode: <input type="text" id="postcode" value="1234AB"></p>
+    <p>Postcode: <input type="text" id="postcode" value="1234AB" maxlength="6" size="6"></p>
 
     <button>Uw blokouderling</button>
 
