@@ -5,7 +5,7 @@ class Postcode
   attr_reader :numbers, :letters
 
   def initialize(postcode)
-    @postcode = postcode
+    @postcode = postcode.upcase.delete(' ')
     @numbers = @postcode[0..3]
     @letters = @postcode[4..5]
   end

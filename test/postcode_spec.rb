@@ -9,6 +9,20 @@ describe 'Postcode' do
     @pc3 = Postcode.new('2807ZZ')
   end
 
+  describe 'create clean postcodes' do
+    it 'should have no problems with mixed uppercase/lowercase' do
+      pc_down = Postcode.new('2805cz')
+      pc_up   = Postcode.new('2805CZ')
+      expect(pc_down).to eq(pc_up)
+    end
+
+    it 'should have no problems with whitespace' do
+      pc_white = Postcode.new('2805 cz')
+      pc_clean = Postcode.new('2805cz')
+      expect(pc_white).to eq(pc_clean)
+    end
+  end
+
   describe 'compare postcodes' do
     it 'should show a postcode as greater than if the numbers are greater' do
       expect(@pc2).to be > @pc1
