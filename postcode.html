@@ -2,9 +2,9 @@
 <!--Maybe replace the input field with a dropdown with all postcodes (only if not too many)-->
 <!--The button can then be removed, selecting should directly yield the result-->
 
-<!--Prevent 2 names being shown when you repeatedly select a postcode.-->
-
 <!--Show more than just the name of the blokouderling: blok nummer (?), photo, short bio, buurtbijbelkring.-->
+
+<!--Read the data from a csv-file on the website: http://sintjansgemeente.nl/wp-content/uploads/2016/01/postcodetabel.csv-->
 
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@
     <title>Postcode</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="resources/js/papaparse.js"></script>
     <script>
         $(document).ready(function(){
             $("button").click(function(){
@@ -33,6 +34,29 @@
                 $("#blokouderling").remove();
                 $("#postcode").after('<div id=blokouderling>' + blokouderling + '</div>');
             });
+
+            file_url = "http://sintjansgemeente.nl/wp-content/uploads/2016/01/postcodetabel.csv";
+            var results = Papa.parse(file_url,
+                    {header:   true,
+                     download: true,
+                     delimiter: ";",
+                     complete: function(results) {
+                         if (results && results.errors)
+                         {
+                             if (results.errors)
+                             {
+                                 errorCount = results.errors.length;
+                                 firstError = results.errors[0];
+                                 alert(errorCount + " errors found");
+                                 alert(result.data.length + " data rows found")
+                                 alert(firstError.message)
+                             }
+                             if (results.data && results.data.length > 0)
+                                 rowCount = results.data.length;
+                                 alert(rowCount + " rows found");
+                         }                     }});
+            console.log(results);
+
         });
     </script>
 
