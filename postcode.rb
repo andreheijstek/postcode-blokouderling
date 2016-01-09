@@ -16,14 +16,7 @@ class Postcode
     elsif self.numbers > other.numbers
       return 1
     elsif self.numbers == other.numbers
-      if self.letters < other.letters
-        return -1
-      elsif self.letters > other.letters
-        return 1
-      else return 0
-      end
-    else
-      raise 'failure'
+      self.letters <=> other.letters
     end
   end
 end
