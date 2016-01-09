@@ -11,12 +11,10 @@ class Postcode
   end
 
   def <=> (other)
-    if self.numbers < other.numbers
-      return -1
-    elsif self.numbers > other.numbers
-      return 1
-    elsif self.numbers == other.numbers
-      self.letters <=> other.letters
+    if self.numbers != other.numbers
+      return self.numbers <=> other.numbers
+    else
+      return self.letters <=> other.letters
     end
   end
 end
