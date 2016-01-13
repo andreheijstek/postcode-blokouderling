@@ -62,4 +62,23 @@ describe 'Postcode' do
       expect(@pc1.between?(@pc1, @pc2)).to be TRUE
     end
   end
+
+  describe 'switch' do
+    it 'should be able to use ranges of postcodes in a switch statement' do
+      first  = Postcode.new('1000AA')
+      second = Postcode.new('2000AA')
+      third  = Postcode.new('3000AA')
+      search = Postcode.new('4000AA')
+
+      result = case
+        when third.between?(first, second)
+          "block_1"
+        when third.between?(second, third)
+          "block_2"
+        else
+          "none"
+        end
+      expect(result).to eq "block_2"
+    end
+  end
 end

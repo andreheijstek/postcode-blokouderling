@@ -15,19 +15,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="resources/js/papaparse.js"></script>
+    <script src="postcode.js"></script>
     <script>
         $(document).ready(function(){
             $("button").click(function(){
+
+//              TODO: Replace this HTML-code with Ruby code using my Postcode class and ranges in the case
+                postcode_entered = $scope.get('Postcode').$new("#postcode");
+
+
                 var postcode = $("#postcode").val().toUpperCase().replace(/ /g,'');
 
-                switch(postcode) {
-                    case "2805CZ":
-                    case "2805CC":
-                        var blokouderling = "Anne Bosman";
-                        break;
-                    case "2806AA":
-                        var blokouderling = "Timen Eilander";
-                        break;
+                switch(postcode_entered) {
+//                    case "2805CZ":
+//                    case "2805CC":
+//                        var blokouderling = "Anne Bosman";
+//                        break;
+//                    case "2806AA":
+//                        var blokouderling = "Timen Eilander";
+//                        break;
+                    case (self.pc2['$between?'](self.pc1, self.pc3)
                     default:
                         var blokouderling = "Onbekend";
                 }
