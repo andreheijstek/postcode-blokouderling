@@ -2,15 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://cdn.opalrb.org/opal/current/opal.js"></script>
     <script src="http://cdn.opalrb.org/opal/current/opal-parser.js"></script>
     <script type="text/javascript">Opal.load('opal-parser')</script>
+    <script src="resources/js/opal-jquery.js"></script>
+</head>
+
+<body>
+    <script src="app/postcode.js"></script>
+    <p>Postcode: <input type="text" id="postcode_id" value="1234AB" maxlength="6" size="6"></p>
+
+    <button>Uw blokouderling</button>
+
 
     <script type="text/ruby">
+      require 'opal'
+      require 'opal-jquery'
       puts "hi from Ruby"
-    </script>
 
-</head>
-<body>
+      postcode = Element.find('#postcode_id')
+      #postcode_to_check = Element['.postcode']
+      puts postcode
+
+#      <!--var postcode = $("#postcode").val().toUpperCase().replace(/ /g,'');-->
+
+    </script>
 </body>
+
 </html>
+
