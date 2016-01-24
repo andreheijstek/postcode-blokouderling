@@ -3,25 +3,20 @@
 <head>
     <meta charset="utf-8">
 
-    <script src="bower_components/jquery/src/jquery.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-migrate/jquery-migrate.min.js"></script>
     <script src="resources/js/opal.js"></script>
     <script src="resources/js/opal-jquery.js"></script>
-    <script src="resources/js/opal-parser.js"></script>
 
-    <script type="text/javascript">Opal.load('opal-parser')</script>
+</head>
 
 <body>
-<p>Postcode: <input type="text" id="postcode_id" value="1234  ab" maxlength="6" size="6"></p>
-<button>Uw blokouderling</button>
+    <p>Postcode: <input type="text" id="postcode_id" value="1234  ab" maxlength="6" size="6"></p>
+    <button>Uw blokouderling</button>
 
+    <!--Please note, this .js file is generated from a Ruby file (usually automagically by Guard)-->
+    <script src="app/blokouderling_lookup.js"></script>
 
-<script type="text/ruby">
-      puts "hi from Ruby"
-
-      postcode = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
-      puts postcode
-    </script>
 </body>
 
 </html>
