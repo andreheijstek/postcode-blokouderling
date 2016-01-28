@@ -2,9 +2,9 @@
 (function(Opal) {
   Opal.dynamic_require_severity = "error";
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
-  var $a, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $range = Opal.range, postcode = nil, pc = nil, pc2800 = nil, pc2900 = nil;
+  var $a, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $range = Opal.range, postcode = nil, blokouderling = nil;
 
-  Opal.add_stubs(['$require', '$include', '$attr_reader', '$delete', '$upcase', '$[]', '$==', '$numbers', '$<=>', '$letters', '$gsub', '$value', '$find', '$puts', '$new', '$between?']);
+  Opal.add_stubs(['$require', '$include', '$attr_reader', '$delete', '$upcase', '$[]', '$==', '$numbers', '$<=>', '$letters', '$new', '$gsub', '$value', '$find', '$between?', '$puts']);
   self.$require("opal");
   self.$require("opal-jquery");
   (function($base, $super) {
@@ -36,17 +36,7 @@
       };
     }), nil) && '<=>';
   })($scope.base, null);
-  postcode = $scope.get('Element').$find("#postcode_id").$value().$upcase().$gsub(/ /, "");
-  self.$puts(postcode);
-  pc = $scope.get('Postcode').$new(postcode);
-  self.$puts("Postcode 1");
-  pc2800 = $scope.get('Postcode').$new("2800AA");
-  self.$puts("Postcode 2");
-  pc2900 = $scope.get('Postcode').$new("2900AA");
-  self.$puts("Postcode 3");
-  if ((($a = pc['$between?'](pc2800, pc2900)) !== nil && (!$a.$$is_boolean || $a == true))) {
-    return self.$puts("In 2800 range")
-    } else {
-    return self.$puts("Outside 2800 range")
-  };
+  postcode = $scope.get('Postcode').$new($scope.get('Element').$find("#postcode_id").$value().$upcase().$gsub(/ /, ""));
+  blokouderling = (function() {if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801AA"), $scope.get('Postcode').$new("2801AS"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B1, ouderling NN"}else if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801AT"), $scope.get('Postcode').$new("2801AT"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B6, ouderling NN"}else if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801AV"), $scope.get('Postcode').$new("2801BA"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B1, ouderling NN"}else if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801BX"), $scope.get('Postcode').$new("2801BZ"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B6, ouderling NN"}else if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801AT"), $scope.get('Postcode').$new("2801AT"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B6, ouderling NN"}else if ((($a = postcode['$between?']($scope.get('Postcode').$new("2801CA"), $scope.get('Postcode').$new("2801CH"))) !== nil && (!$a.$$is_boolean || $a == true))) {return "Blok B6, ouderling NN"}else {return "none"}})();
+  return self.$puts(blokouderling);
 })(Opal);

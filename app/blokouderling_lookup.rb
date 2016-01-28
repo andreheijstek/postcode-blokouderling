@@ -19,18 +19,22 @@ class Postcode
   end
 end
 
-postcode = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
-puts postcode
+postcode = Postcode.new(Element.find('#postcode_id').value.upcase.gsub(/ /, ''))
 
-pc = Postcode.new(postcode)
-puts "Postcode 1"
-pc2800 = Postcode.new('2800AA')
-puts "Postcode 2"
-pc2900 = Postcode.new('2900AA')
-puts "Postcode 3"
-
-if pc.between?(pc2800, pc2900) then
-  puts "In 2800 range"
-else
-  puts "Outside 2800 range"
-end
+blokouderling = case
+                  when postcode.between?(Postcode.new('2801AA'), Postcode.new('2801AS'))
+                    "Blok B1, ouderling NN"
+                  when postcode.between?(Postcode.new('2801AT'), Postcode.new('2801AT'))
+                    "Blok B6, ouderling NN"
+                  when postcode.between?(Postcode.new('2801AV'), Postcode.new('2801BA'))
+                    "Blok B1, ouderling NN"
+                  when postcode.between?(Postcode.new('2801BX'), Postcode.new('2801BZ'))
+                    "Blok B6, ouderling NN"
+                  when postcode.between?(Postcode.new('2801AT'), Postcode.new('2801AT'))
+                    "Blok B6, ouderling NN"
+                  when postcode.between?(Postcode.new('2801CA'), Postcode.new('2801CH'))
+                    "Blok B6, ouderling NN"
+                  else
+                    "none"
+                end
+puts blokouderling
