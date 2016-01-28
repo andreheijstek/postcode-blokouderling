@@ -1,80 +1,23 @@
-<!--TODO:-->
-<!--Maybe replace the input field with a dropdown with all postcodes (only if not too many)-->
-<!--The button can then be removed, selecting should directly yield the result-->
-
-<!--Show more than just the name of the blokouderling: blok nummer (?), photo, short bio, buurtbijbelkring.-->
-
-<!--Read the data from a csv-file on the website: http://sintjansgemeente.nl/wp-content/uploads/2016/01/postcodetabel.csv-->
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Postcode</title>
+    <meta charset="utf-8">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="resources/js/papaparse.js"></script>
-    <script src="postcode.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-
-//              TODO: Replace this HTML-code with Ruby code using my Postcode class and ranges in the case
-                postcode_entered = $scope.get('Postcode').$new("#postcode");
-
-
-                var postcode = $("#postcode").val().toUpperCase().replace(/ /g,'');
-
-                switch(postcode_entered) {
-//                    case "2805CZ":
-//                    case "2805CC":
-//                        var blokouderling = "Anne Bosman";
-//                        break;
-//                    case "2806AA":
-//                        var blokouderling = "Timen Eilander";
-//                        break;
-                    case (self.pc2['$between?'](self.pc1, self.pc3)
-                    default:
-                        var blokouderling = "Onbekend";
-                }
-                $("#blokouderling").remove();
-                $("#postcode").after('<div id=blokouderling>' + blokouderling + '</div>');
-            });
-
-            file_url = "http://sintjansgemeente.nl/wp-content/uploads/2016/01/postcodetabel.csv";
-            var results = Papa.parse(file_url,
-                    {header:   true,
-                     download: true,
-                     delimiter: ";",
-                     complete: function(results) {
-                         if (results && results.errors)
-                         {
-                             if (results.errors)
-                             {
-                                 errorCount = results.errors.length;
-                                 firstError = results.errors[0];
-                                 alert(errorCount + " errors found");
-                                 alert(result.data.length + " data rows found")
-                                 alert(firstError.message)
-                             }
-                             if (results.data && results.data.length > 0)
-                                 rowCount = results.data.length;
-                                 alert(rowCount + " rows found");
-                         }                     }});
-            console.log(results);
-
-        });
-    </script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="resources/js/opal.js"></script>
+    <script src="resources/js/opal-jquery.js"></script>
 
 </head>
 
 <body>
-
-    <p>Postcode: <input type="text" id="postcode" value="1234AB" maxlength="6" size="6"></p>
-
+    <p>Postcode: <input type="text" id="postcode_id" value="2805  ab" maxlength="6" size="6"></p>
     <button>Uw blokouderling</button>
 
+    <!--Please note, this .js file is generated from a Ruby file (usually automagically by Guard)-->
+    <script src="app/blokouderling_lookup.js"></script>
+
 </body>
+
 </html>
 

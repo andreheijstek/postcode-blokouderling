@@ -2,12 +2,10 @@
 (function(Opal) {
   Opal.dynamic_require_severity = "error";
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
-  var $a, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $range = Opal.range, postcode = nil, pc = nil, pc2800 = nil, pc2900 = nil;
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $range = Opal.range;
 
-  Opal.add_stubs(['$require', '$include', '$attr_reader', '$delete', '$upcase', '$[]', '$==', '$numbers', '$<=>', '$letters', '$gsub', '$value', '$find', '$puts', '$new', '$between?']);
-  self.$require("opal");
-  self.$require("opal-jquery");
-  (function($base, $super) {
+  Opal.add_stubs(['$include', '$attr_reader', '$delete', '$upcase', '$[]', '$==', '$numbers', '$<=>', '$letters']);
+  return (function($base, $super) {
     function $Postcode(){};
     var self = $Postcode = $klass($base, $super, 'Postcode', $Postcode);
 
@@ -35,18 +33,5 @@
         return self.$numbers()['$<=>'](other.$numbers())
       };
     }), nil) && '<=>';
-  })($scope.base, null);
-  postcode = $scope.get('Element').$find("#postcode_id").$value().$upcase().$gsub(/ /, "");
-  self.$puts(postcode);
-  pc = $scope.get('Postcode').$new(postcode);
-  self.$puts("Postcode 1");
-  pc2800 = $scope.get('Postcode').$new("2800AA");
-  self.$puts("Postcode 2");
-  pc2900 = $scope.get('Postcode').$new("2900AA");
-  self.$puts("Postcode 3");
-  if ((($a = pc['$between?'](pc2800, pc2900)) !== nil && (!$a.$$is_boolean || $a == true))) {
-    return self.$puts("In 2800 range")
-    } else {
-    return self.$puts("Outside 2800 range")
-  };
+  })($scope.base, null)
 })(Opal);
