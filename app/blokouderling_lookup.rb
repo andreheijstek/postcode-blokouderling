@@ -1,28 +1,10 @@
 require 'opal'
 require 'opal-jquery'
-# require '../app/postcode'
-require 'csv'
-
-class Postcode
-
-  include Comparable
-
-  attr_reader :numbers, :letters
-
-  def initialize(postcode)
-    @postcode = postcode.upcase.delete(' ')
-    @numbers = @postcode[0..3]
-    @letters = @postcode[4..5]
-  end
-
-  def <=> (other)
-    (self.numbers == other.numbers) ? self.letters <=> other.letters : self.numbers <=> other.numbers
-  end
-end
 
 postcode = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
-puts "Postcode from the Element.find: #{postcode}"
 
+#TODO String as hash key is not the best style. Update csv to represent as symbol.
+# Then use to_s to make a symbol from the postcode from the form.
 postcode_table = [{'2801AA' => [ 'B-1', 'onbekend'] },
                   {'2801AB' => [ 'B-1', 'onbekend'] },
                   {'2801AC' => [ 'B-1', 'onbekend'] },
@@ -2609,12 +2591,7 @@ postcode_table = [{'2801AA' => [ 'B-1', 'onbekend'] },
                   {'2809RB' => [ 'B-8', 'onbekend'] },
                   {'2809RC' => [ 'B-8', 'onbekend'] },
                   {'2809RD' => [ 'B-8', 'onbekend'] }]
-puts "postcode_table[0]: #{postcode_table[1]}"
-puts "postcode_table[0][#{postcode}]: #{postcode_table[1][postcode]}"
 
 blokouderling = postcode_table.select{|block| block[postcode]}
-puts "Blokouderling: #{blokouderling}"
-p blokouderling
-puts "Class: #{blokouderling.class}"
 puts "Blokouderling: #{blokouderling[0][postcode]}"
 
