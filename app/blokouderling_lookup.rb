@@ -1,7 +1,8 @@
 require 'opal'
 require 'opal-jquery'
 
-postcode = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
+# postcode = Elementt.find('#postcode_id').value.upcase.gsub(/ /, '')
+# puts postcode
 
 #TODO String as hash key is not the best style. Update csv to represent as symbol.
 # Then use to_s to make a symbol from the postcode from the form.
@@ -2592,6 +2593,38 @@ postcode_table = [{'2801AA' => [ 'B-1', 'onbekend'] },
                   {'2809RC' => [ 'B-8', 'onbekend'] },
                   {'2809RD' => [ 'B-8', 'onbekend'] }]
 
-blokouderling = postcode_table.select{|block| block[postcode]}
-puts "Blokouderling: #{blokouderling[0][postcode]}"
+Document.ready? do
+  puts "In Ruby"
+  postcode_field = Element.find('#postcode_id')
+  postcode_value = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
+  puts postcode_value
 
+  blokouderling = postcode_table.select{|block| block[postcode_value]}
+  puts "Postcode:      #{postcode_value}"
+  puts "Blokouderling: #{blokouderling}"
+  blok      = blokouderling[0][postcode_value][0]
+  ouderling = blokouderling[0][postcode_value][1]
+
+  button = Element.find('#button_id')
+  puts "Element: #{button}"
+  button.on :click do
+    puts "Click detected"
+    Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
+    postcode_field.value = postcode_value
+  end
+
+=begin
+
+  element.on :input do
+    puts "Input given"
+  end
+
+  Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
+
+  Element.find('#postcode_id').on :click do
+    puts "Click detected"
+    Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
+  end
+=end
+
+end
