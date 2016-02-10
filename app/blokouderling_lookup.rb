@@ -2595,36 +2595,18 @@ postcode_table = [{'2801AA' => [ 'B-1', 'onbekend'] },
 
 Document.ready? do
   puts "In Ruby"
-  postcode_field = Element.find('#postcode_id')
-  postcode_value = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
-  puts postcode_value
+  postcode_field = Element.find('#button_id')
+  postcode_field.on :click do
+    puts "Postcode field was clicked"
+    postcode_value = Element.find('#postcode_id').value.upcase.gsub(/ /, '')
+    puts "Value: #{postcode_value}"
 
-  blokouderling = postcode_table.select{|block| block[postcode_value]}
-  puts "Postcode:      #{postcode_value}"
-  puts "Blokouderling: #{blokouderling}"
-  blok      = blokouderling[0][postcode_value][0]
-  ouderling = blokouderling[0][postcode_value][1]
+    blokouderling = postcode_table.select{|block| block[postcode_value]}
+    puts "Postcode:      #{postcode_value}"
+    puts "Blokouderling: #{blokouderling}"
+    blok      = blokouderling[0][postcode_value][0]
+    ouderling = blokouderling[0][postcode_value][1]
 
-  button = Element.find('#button_id')
-  puts "Element: #{button}"
-  button.on :click do
-    puts "Click detected"
-    Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
-    postcode_field.value = postcode_value
+    Element.find('#blokouderling_id').text = "Blok: #{blok}, Ouderling: #{ouderling}"
   end
-
-=begin
-
-  element.on :input do
-    puts "Input given"
-  end
-
-  Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
-
-  Element.find('#postcode_id').on :click do
-    puts "Click detected"
-    Element.find('#blokouderling').text = "Blok: #{blok}, Ouderling: #{ouderling}"
-  end
-=end
-
 end

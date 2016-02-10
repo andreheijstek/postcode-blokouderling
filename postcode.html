@@ -7,23 +7,19 @@
     <script src="bower_components/jquery-migrate/jquery-migrate.min.js"></script>
     <script src="resources/js/opal.js"></script>
     <script src="resources/js/opal-jquery.js"></script>
+    <script src="app/blokouderling_lookup.js"></script>
 
 </head>
 
 <body>
     <form>
-        Postcode: <input type="text" name="postcode" id=postcode_id value="2801AA"><br>
-        <!--<input type="submit" value="Vind uw blok en ouderling">-->
-    </form>
-    <form>
+        Postcode: <input type="text" name="postcode" id=postcode_id value="2801AA" maxlength="6" size="6"><br>
         <button type=button id="button_id">Vind uw blok en ouderling</button>
     </form>
 
     <!--TODO: For whatever reason the new value in the form is not used, but always only the initial value of 2801AA -->
 
-    <!--<p>Postcode: <input type="text" id="postcode_id" value="2801ab" maxlength="6" size="6"></p>-->
-    <!--<button type="button" id="postcode_button_id">Uw blokouderling</button>-->
-    <h2 id="blokouderling">Blok en ouderling</h2>
+    <h2 id="blokouderling_id">Blok en ouderling</h2>
 
     <!--Please note, this .js file is generated from a Ruby file (usually automagically by Guard)-->
     <script src="app/blokouderling_lookup.js"></script>
