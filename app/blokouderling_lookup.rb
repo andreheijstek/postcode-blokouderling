@@ -2591,9 +2591,9 @@ postcode_table = [{'2801AA' => [ 'B-1', 'Jan de Wit'] },
                   {'2809RD' => [ 'B-8', 'Edwin Schalk'] }]
 
 Document.ready? do
-  arr_of_arrs = CSV.read("../postcodetabel.csv")
-  puts arr_of_arrs[0]
-  puts arr_of_arrs[1]
+  # arr_of_arrs = CSV.read("../postcodetabel.csv")
+  # puts arr_of_arrs[0]
+  # puts arr_of_arrs[1]
 
   Element.find('#button_id').on :click do
     postcode_value = Element.find('#postcode_id').value.upcase.delete(' ')
