@@ -2598,7 +2598,6 @@ Document.ready? do
   Element.find('#button_id').on :click do
     postcode_value = Element.find('#postcode_id').value.upcase.delete(' ')
     blokouderling = postcode_table.select{|block| block[postcode_value]}
-    puts blokouderling
     if (blokouderling == [])
       Element.find('#blokouderling_id').text = "Voor deze postcode kon geen ouderling gevonden worden. Neem alstublieft contact op met de coordinator_pastoraat@sintjansgemeente.nl"
     else
