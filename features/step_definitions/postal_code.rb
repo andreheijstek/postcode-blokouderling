@@ -14,3 +14,7 @@ Then(/^the "([^"]*)" and "([^"]*)" should be shown$/) do |blokouderling, email|
   element = find(:id, 'blokouderling_id')
   expect(page).to have_content "Ouderling: #{blokouderling}, e-mail: #{email}"
 end
+
+Then(/^this message should be shown: "([^"]*)"$/) do |message|
+  expect(page).to have_content message
+end

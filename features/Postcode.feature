@@ -12,5 +12,8 @@ Feature: Find blokouderling based on postcode
     | 2801AA      | "Jan de Wit"  | "jpdewit@kpnplanet.nl" |
     | 2805CZ      | "Anne Bosman" | "a.bosman@solcon.nl"   |
 
-
+  Scenario: If postal code is out of scope, a helpful message should be given
+    Given I live in this postal code area 3434GH
+    When I search for my blokouderling
+    Then this message should be shown: "Voor deze postcode kon geen ouderling gevonden worden. Neem alstublieft contact op met de coordinator_pastoraat@sintjansgemeente.nl"
 
