@@ -2,7 +2,7 @@ require 'capybara'
 
 Given(/^I live in this postal code area (\d{4}[a-zA-Z]{2})$/) do |postalcode|
   @postalcode = postalcode
-  visit "http://sintjansgemeente.nl/contact/wijkouderling/"
+  visit "http://sintjansgemeente.nl/contact/inschrijven/"
   fill_in('postcode_id', :with => @postalcode)
 end
 
@@ -19,3 +19,4 @@ Then(/^this message should be shown: "([^"]*)"$/) do |message|
 end
 
 # Repeat for http://sintjansgemeente.nl/contact/inschrijven/
+# visit "http://sintjansgemeente.nl/contact/wijkouderling/"
