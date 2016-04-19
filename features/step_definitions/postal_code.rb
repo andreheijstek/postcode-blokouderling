@@ -1,14 +1,14 @@
 require 'capybara'
 
+
 Given(/^I live in this postal code area (\d{4}[a-zA-Z]{2})$/) do |postalcode|
   @postalcode = postalcode
-  visit "http://sintjansgemeente.nl/contact/inschrijven/"
-  # visit "http://sintjansgemeente.nl/contact/wijkouderling/"
-
-  fill_in('postcode_id', :with => @postalcode)
 end
 
-When(/^I search for my blokouderling$/) do
+When(/^I search for my blokouderling at "([^"]*)"$/) do |page|
+  base_url = "http://sintjansgemeente.nl/contact"
+  visit "#{base_url}/#{page}"
+  fill_in('postcode_id', :with => @postalcode)
   click_on('Vind uw blokouderling')
 end
 
@@ -19,6 +19,3 @@ end
 Then(/^this message should be shown: "([^"]*)"$/) do |message|
   expect(page).to have_content message
 end
-
-# Repeat for http://sintjansgemeente.nl/contact/inschrijven/
-# visit "http://sintjansgemeente.nl/contact/wijkouderling/"
