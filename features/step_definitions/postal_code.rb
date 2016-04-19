@@ -1,6 +1,5 @@
 require 'capybara'
 
-
 Given(/^I live in this postal code area (\d{4}[a-zA-Z]{2})$/) do |postalcode|
   @postalcode = postalcode
 end
