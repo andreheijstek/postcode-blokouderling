@@ -55,9 +55,9 @@ define( [
 	jQuery.extend( support, {
 		pixelPosition: function() {
 
-			// This test is executed only once but we still do memoizing
+			// This spec is executed only once but we still do memoizing
 			// since we can use the boxSizingReliable pre-computing.
-			// No need to check if the test was already performed, though.
+			// No need to check if the spec was already performed, though.
 			computeStyleTests();
 			return pixelPositionVal;
 		},

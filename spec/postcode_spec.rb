@@ -1,5 +1,5 @@
-require 'rspec'
-require_relative '../postcode.rb'
+require_relative '../app/postcode.rb'
+require_relative 'spec_helper'
 
 describe 'Postcode' do
 
@@ -48,18 +48,18 @@ describe 'Postcode' do
   describe 'ranges' do
     it 'should find a postcode that is clearly between others as between?' do
       pc_between = Postcode.new('2805XX')
-      expect(pc_between.between?(@pc1, @pc2)).to be TRUE
+      expect(pc_between.between?(@pc1, @pc2)).to be true
     end
 
     it 'should find a postcode that is just one letter apart as between?' do
       pc_adjacent = Postcode.new('2806AC')
-      expect(pc_adjacent.between?(@pc2, @pc3)).to be TRUE
+      expect(pc_adjacent.between?(@pc2, @pc3)).to be true
       pc_adjacent = Postcode.new('2807ZY')
-      expect(pc_adjacent.between?(@pc2, @pc3)).to be TRUE
+      expect(pc_adjacent.between?(@pc2, @pc3)).to be true
     end
 
     it 'should find a postcode that is exactly on the border as between?' do
-      expect(@pc1.between?(@pc1, @pc2)).to be TRUE
+      expect(@pc1.between?(@pc1, @pc2)).to be true
     end
   end
 

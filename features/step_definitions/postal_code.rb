@@ -1,20 +1,20 @@
 require 'capybara'
 
-Given(/^I live in this postal code area (\d{4}[a-zA-Z]{2})$/) do |postalcode|
-  @postalcode = postalcode
+Stel(/^ik woon in dit postcodegebied (\d{4}[a-zA-Z]{2})$/) do |postalcode|
+  @postal_code = postalcode
 end
 
-When(/^I search for my blokouderling at "([^"]*)"$/) do |page|
+Als(/^ik zoek naar mijn blokouderling op "([^"]*)"$/) do |page|
   base_url = "http://sintjansgemeente.nl/contact"
   visit "#{base_url}/#{page}"
-  fill_in('postcode_id', :with => @postalcode)
+  fill_in('postcode_id', :with => @postal_code)
   click_on('Vind uw blokouderling')
 end
 
-Then(/^the "([^"]*)" and "([^"]*)" should be shown$/) do |blokouderling, email|
-  expect(page).to have_content "Ouderling: #{blokouderling}, e-mail: #{email}"
+Dan(/^moet "([^"]*)" en "([^"]*)" getoond worden$/) do |blokouderling, email|
+  expect(page).to have_content "#{blokouderling}, e-mail: #{email}"
 end
 
-Then(/^this message should be shown: "([^"]*)"$/) do |message|
+Dan(/^moet deze melding getoond worden "([^"]*)"$/) do |message|
   expect(page).to have_content message
 end

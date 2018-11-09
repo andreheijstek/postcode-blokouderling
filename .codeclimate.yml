@@ -33,4 +33,4 @@ ratings:
   - "**.php"
   - "**.py"
 exclude_paths:
-- test/
+- spec/
