@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'capybara', '>= 2.0.2'
+gem 'capybara'
 gem 'capybara-webkit'
-gem 'guard'
-gem 'guard-rake'
 gem 'launchy'
-gem 'opal'
-gem 'opal-jquery'
 gem 'poltergeist'
 gem 'pry'
 gem 'rb-readline'
